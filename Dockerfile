@@ -5,7 +5,7 @@ FROM alpine:3.13
 ENV PYTHONUNBUFFERED=1
 
 RUN echo "**** install Python ****" && \
-    apk add --no-cache python3 && \
+    apk add --no-cache python3 libxml2 libxslt && \
     if [ ! -e /usr/bin/python ]; then ln -sf python3 /usr/bin/python ; fi && \
     \
     echo "**** install pip ****" && \
