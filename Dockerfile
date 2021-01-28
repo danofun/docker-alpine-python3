@@ -5,8 +5,12 @@ FROM alpine:3.13
 ENV PYTHONUNBUFFERED=1
 
 RUN echo "**** install Python ****" && \
-    apk add --no-cache python3 libxml2-dev libxslt-dev && \
+    apk add --no-cache python3  && \
     if [ ! -e /usr/bin/python ]; then ln -sf python3 /usr/bin/python ; fi && \
+    \
+    echo "**** install lxml dependencies ****" && \
+    apk add --no-cache --virtual .build-deps gcc libc-dev libxslt-dev && \
+    apk add --no-cache libxslt && \
     \
     echo "**** install pip ****" && \
     python3 -m ensurepip && \
