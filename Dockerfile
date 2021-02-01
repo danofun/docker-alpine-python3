@@ -15,5 +15,8 @@ RUN echo "**** install Python ****" && \
     echo "**** install pip ****" && \
     python3 -m ensurepip && \
     rm -r /usr/lib/python*/ensurepip && \
-    pip3 install --no-cache --upgrade pip setuptools wheel requests bs4 lxml && \
-    if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi
+    pip3 install --no-cache --upgrade pip setuptools wheel requests bs4 lxml playwright==1.8.0a1 && \
+    if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi \
+    \
+    echo "**** install Playwright for Python ****" && \
+    playwright install
